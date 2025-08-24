@@ -71,6 +71,15 @@ function(add_dart_vst3_plugin target_name plugin_sources)
         ${BRIDGE_DIR}/src/plugin_view.cpp
     )
     
+    # Add platform-specific main entry point
+    if(SMTG_MAC)
+        list(APPEND bridge_sources_no_factory ${VST3_SDK_DIR}/public.sdk/source/main/macmain.cpp)
+    elseif(SMTG_WIN)
+        list(APPEND bridge_sources_no_factory ${VST3_SDK_DIR}/public.sdk/source/main/dllmain.cpp)
+    elseif(SMTG_LINUX)
+        list(APPEND bridge_sources_no_factory ${VST3_SDK_DIR}/public.sdk/source/main/linuxmain.cpp)
+    endif()
+    
     set(all_sources
         ${plugin_sources}
         ${bridge_sources_no_factory}
