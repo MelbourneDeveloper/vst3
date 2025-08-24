@@ -1,5 +1,9 @@
 #include "public.sdk/source/vst/vstaudioeffect.h"
+#include "public.sdk/source/vst/vsthelpers.h"
+#include "pluginterfaces/vst/ivstparameterchanges.h"
+#include "base/source/fstreamer.h"
 #include "../include/echo_ids.h"
+#include <algorithm>
 
 namespace Steinberg {
 namespace Vst {

@@ -22,11 +22,9 @@ endif()
 # Include the VST3 bridge helper
 include(../../dart_vst3_bridge/native/cmake/VST3Bridge.cmake)
 
-# Define plugin-specific sources
+# Define plugin-specific sources - factory includes the others
 set(echo_sources
   src/echo_factory.cpp
-  src/echo_processor.cpp
-  src/echo_controller.cpp
 )
 
 # Create the VST3 plugin using the bridge

@@ -1,4 +1,6 @@
 #include "public.sdk/source/vst/vsteditcontroller.h"
+#include "public.sdk/source/vst/vsthelpers.h"
+#include "base/source/fstreamer.h"
 #include "../include/echo_ids.h"
 
 namespace Steinberg {

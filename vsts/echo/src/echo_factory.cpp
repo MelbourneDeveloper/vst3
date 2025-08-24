@@ -1,14 +1,13 @@
 #include "public.sdk/source/main/pluginfactory.h"
 #include "public.sdk/source/vst/vstaudioeffect.h"
+#include "public.sdk/source/vst/vsteditcontroller.h"
 #include "../include/echo_ids.h"
 
-// Forward declarations
-namespace Steinberg {
-namespace Vst {
-class EchoProcessor;
-class EchoController;
-}
-}
+#define FULL_VERSION_STR "1.0.0"
+
+// Include actual class definitions
+#include "echo_processor.cpp"
+#include "echo_controller.cpp"
 
 // Plugin factory entry point
 BEGIN_FACTORY_DEF("Your Company", "https://www.yourcompany.com", "mailto:info@yourcompany.com")
