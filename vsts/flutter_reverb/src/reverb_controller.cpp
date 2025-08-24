@@ -4,7 +4,7 @@
 // This controller manages parameters and UI for the flutter_reverb
 // Dart package, providing the control interface for the VST3 host.
 
-#include "dart_reverb_ids.h"
+#include "../include/reverb_ids.h"
 #include "pluginterfaces/base/ibstream.h"
 #include "pluginterfaces/base/ustring.h"
 #include "pluginterfaces/vst/ivstmidicontrollers.h"

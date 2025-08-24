@@ -28,9 +28,10 @@ curl -L -o vst3sdk.zip https://www.steinberg.net/vst3sdk
 
 1. **dart_vst_host** - High-level Dart bindings for VST3 plugin hosting with RAII resource management
 2. **dart_vst_graph** - Audio graph system allowing connection of VST plugins, mixers, splitters, and gain nodes
-3. **flutter_ui** - Desktop Flutter application providing a GUI for the VST host
-4. **native/** - C++ implementation of VST3 host and audio graph using Steinberg VST3 SDK
-5. **plugin/** - VST3 plugin that wraps the Dart graph system for use in DAWs
+3. **dart_vst3_bridge** - Shared C++ infrastructure for building VST3 plugins with Dart integration
+4. **flutter_ui** - Desktop Flutter application providing a GUI for the VST host
+5. **native/** - C++ implementation of VST3 host and audio graph using Steinberg VST3 SDK
+6. **vsts/** - Individual VST plugin packages, each builds its own .vst3 plugin
 
 ### Architecture
 
@@ -64,13 +65,21 @@ make
 cp libdart_vst_host.dylib ../../
 ```
 
-**VST3 Plugin:**
+**VST3 Plugins (each package builds its own):**
 ```bash
-cd plugin/
+# Build flutter_reverb plugin
+cd vsts/flutter_reverb/
 mkdir build && cd build  
 cmake ..
 make
-# Output: dvh_plugin.vst3 bundle
+# Output: flutter_reverb.vst3 bundle
+
+# Build echo plugin
+cd ../../echo/
+mkdir build && cd build
+cmake ..
+make
+# Output: echo.vst3 bundle
 ```
 
 **Dart Packages:**
@@ -111,6 +120,8 @@ dart test test/specific_test.dart
 - `native/include/dvh_graph.h` - C API for audio graph
 - `dart_vst_host/lib/src/host.dart` - High-level VST host wrapper
 - `dart_vst_graph/lib/src/bindings.dart` - FFI bindings and VstGraph class
+- `dart_vst3_bridge/native/cmake/VST3Bridge.cmake` - Shared CMake functions for plugin builds
+- `vsts/*/CMakeLists.txt` - Individual plugin build configurations
 - `flutter_ui/lib/main.dart` - Flutter application entry point
 
 ## Development Workflow
@@ -119,7 +130,9 @@ dart test test/specific_test.dart
 2. Set VST3_SDK_DIR environment variable
 3. Run Dart tests to verify FFI bindings
 4. Use Flutter UI for interactive testing
-5. Tests will fail loudly if native dependencies are missing
+5. Build individual VST plugins in their respective `vsts/` directories
+6. Each plugin package is self-contained and builds its own .vst3 bundle
+7. Tests will fail loudly if native dependencies are missing
 
 ## Platform-Specific Notes
 

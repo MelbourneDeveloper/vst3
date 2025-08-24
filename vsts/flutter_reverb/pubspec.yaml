@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   dart_vst3_bridge:
-    path: ../dart_vst3_bridge
+    path: ../../dart_vst3_bridge
 
 dev_dependencies:
   flutter_test:

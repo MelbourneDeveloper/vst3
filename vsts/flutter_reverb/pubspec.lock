@@ -44,7 +44,7 @@ packages:
   dart_vst3_bridge:
     dependency: "direct main"
     description:
-      path: "../dart_vst3_bridge"
+      path: "../../dart_vst3_bridge"
       relative: true
     source: path
     version: "1.0.0"

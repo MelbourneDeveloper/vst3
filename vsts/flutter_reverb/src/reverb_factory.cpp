@@ -4,7 +4,7 @@
 // This creates instances of the processor and controller that use
 // pure Dart audio processing from the flutter_reverb package.
 
-#include "dart_reverb_ids.h"
+#include "../include/reverb_ids.h"
 #include "public.sdk/source/main/pluginfactory.h"
 #include "pluginterfaces/vst/ivstaudioprocessor.h"
 #include "pluginterfaces/vst/ivsteditcontroller.h"

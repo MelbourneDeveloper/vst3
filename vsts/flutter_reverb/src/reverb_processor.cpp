@@ -5,7 +5,7 @@
 // reverb processing code via FFI callbacks, implementing a complete
 // VST3 plugin powered by flutter_reverb Dart package.
 
-#include "dart_reverb_ids.h"
+#include "../include/reverb_ids.h"
 #include "pluginterfaces/base/ibstream.h"
 #include "pluginterfaces/base/ipluginbase.h"
 #include "pluginterfaces/vst/ivstaudioprocessor.h"
